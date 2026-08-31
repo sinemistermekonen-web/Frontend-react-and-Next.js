@@ -1,1 +1,2 @@
-# Frontend-react-and-Next.js
+# Addis cafe
+My React project

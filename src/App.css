@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #faf7f2;
+  color: #2d211b;
+}
+
+/* APP */
+
+.app {
+  min-height: 100vh;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: white;
+  border-bottom: 1px solid #e5ddd5;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: #2d211b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #8b5e3c;
+}
+
+/* HERO */
+
+.hero {
+  text-align: center;
+  padding: 90px 20px;
+  background: #efe2d2;
+}
+
+.welcome {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero h2 {
+  margin: 0 0 15px;
+  font-size: 52px;
+}
+
+.hero p:last-child {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* MENU */
+
+.menu-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 20px;
+}
+
+.section-label {
+  text-align: center;
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.menu-section > h2 {
+  text-align: center;
+  margin: 0 0 40px;
+  font-size: 36px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* MENU ITEM */
+
+.menu-item {
+  padding: 25px;
+  background: white;
+  border: 1px solid #e5ddd5;
+  border-radius: 12px;
+}
+
+.category {
+  color: #8b5e3c;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu-item h3 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.menu-item p {
+  margin: 0 0 18px;
+  color: #756b63;
+  line-height: 1.5;
+}
+
+.menu-item strong {
+  color: #8b5e3c;
+  font-size: 18px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 50px 20px;
+  text-align: center;
+  background: #2d211b;
+  color: white;
+}
+
+.footer h3 {
+  margin: 0 0 10px;
+}
+
+.footer p {
+  margin: 8px 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .header {
+    padding: 20px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 40px;
+  }
+}
