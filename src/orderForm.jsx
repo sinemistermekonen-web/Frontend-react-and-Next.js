@@ -9,23 +9,24 @@ const OrderForm = () => {
 
   const handleChange = (e) => {
     setForm({
-      ...form,
-      [e.target.name]: e.target.value
+      ...form,  [e.target.name]: e.target.value
     });
   };
 
   const phoneRegex = /^(?:\+251|0)9\d{8}$/;
 
   const validPhone = phoneRegex.test(form.phone);
+  const validName = form.name.trim() !== "";
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validPhone) {
+    if (!validPhone || !validName) {
       return;
     }
 
-    alert("Order submitted successfully");
+    alert(`Order submitted successfully!\n\nName: ${form.name}\nPhone: ${form.phone}\nArea: ${form.area}`
+ );
   };
 
   return (
@@ -62,7 +63,7 @@ const OrderForm = () => {
 
       <button
         type="submit"
-        disabled={!validPhone}
+        disabled={!validPhone || !validName}
       >
         Place Order
       </button>

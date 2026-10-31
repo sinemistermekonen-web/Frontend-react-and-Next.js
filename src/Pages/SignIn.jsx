@@ -1,21 +1,30 @@
-import  {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
-function SignIn({onSignIn}) {
-    const navigate = useNavigate();
-    const location = useLocation();
+function SignIn() {
+  const { signIn } = useAuth();
 
-    const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    function handleSignIn() {
-        onSignIn();
-        navigate(from,{replace:true});
+  const from = location.state?.from?.pathname || "/";
 
-    }
-     return (
-        <section>
-            <h2>Sign In</h2>
-            <p> You must sign in before checking out</p>
-        </section>
-     )
+  function handleSignIn() {
+    signIn();
+    navigate(from, { replace: true });
+  }
+
+  return (
+    <section>
+      <h2>Sign In</h2>
+
+      <p>You must sign in before checking out.</p>
+
+      <button onClick={handleSignIn}>
+        Sign In
+      </button>
+    </section>
+  );
 }
+
 export default SignIn;

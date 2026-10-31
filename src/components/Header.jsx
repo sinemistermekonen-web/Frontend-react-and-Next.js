@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
  
-function Header(){
+function Header( cart ){
     return (
         <header>
             <h1> Addis Eats</h1>
@@ -9,7 +9,7 @@ function Header(){
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/menu">Menu</Link>
-                <Link to="/checkout">Checkout</Link>
+                <Link to="/checkout">Checkout ({cart.length})</Link>
             </nav>
         </header>
     );

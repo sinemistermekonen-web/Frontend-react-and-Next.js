@@ -1,44 +1,63 @@
 
 import { Link, useSearchParams } from "react-router-dom";
 import { dishes } from "../data";
+import useCartStore from "../store/Cartstore";
+import CategoryBar from "../components/CategoryBar";
 
-function Menu( {addtocart}) { 
+function Menu() {
 
-   const [searchParams, setSearchParams] = useSearchParams();
+  const addItem = useCartStore((state) => state.addItem);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const category = searchParams.get("category");
 
-  const filteredDishes = category ? dishes.filter((dish) => dish.category === category) : dishes;
+  const categories = ["all", "traditional", "vegetarian", "meat"];
+
+  const filteredDishes = category
+
+    ? dishes.filter((dish) => dish.category === category)
+
+    : dishes;
 
   function handleCategoryChange(newCategory) {
+
     if (newCategory === "all") {
+
       setSearchParams({});
+
     } else {
+      
       setSearchParams({ category: newCategory });
+
     }
   }
 
   return (
     <section>
       <h2>Our Menu</h2>
-        <div>
-            <button onClick={() => handleCategoryChange("all")}>All</button>
-            <button onClick={() => handleCategoryChange("traditonal")}>Traditional</button>
-            <button onClick={() => handleCategoryChange("vegetarian")}>Vegetarian</button>
-            <button onClick={() => handleCategoryChange("meat")}>Meat</button>
-            
-        </div>
+
+      <CategoryBar
+        categories={categories}
+        selectedCategory={category || "all"}
+        onSelect={handleCategoryChange}
+      />
 
       {filteredDishes.map((dish) => (
         <article key={dish.id}>
           <h3>{dish.name}</h3>
+
           <p>{dish.description}</p>
+
           <p>{dish.price} ETB</p>
 
           <Link to={`/menu/${dish.id}`}>
             View Dish
           </Link>
-          <button onClick={() => addtocart(dish)}> Add to Cart</button>
+
+          <button onClick={() => addItem(dish)}>
+            Add to Cart
+          </button>
         </article>
       ))}
     </section>
@@ -46,4 +65,3 @@ function Menu( {addtocart}) {
 }
 
 export default Menu;
-
